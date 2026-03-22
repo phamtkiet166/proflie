@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tkiet Agency – Thiết Kế Website Chuyên Nghiệp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Raleway:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+:root{
+  --w:#ffffff;--off:#f5f5f7;--ink:#1d1d1f;--ink2:#3d3d3f;--ink3:#86868b;
+  --blue:#1a6cf7;--blue-d:#1050c4;--blue-l:#4d8ffb;--blue-bg:#f0f4ff;
+  --border:#e0e0e5;--sh:0 2px 20px rgba(0,0,0,0.07);--shl:0 8px 40px rgba(0,0,0,0.10);
+  --body:'Be Vietnam Pro',sans-serif;
+  --display:'Raleway',sans-serif;
+}
+body{font-family:var(--body);font-size:17px;line-height:1.68;background:var(--w);color:var(--ink);overflow-x:hidden;font-weight:400;word-break:normal;overflow-wrap:break-word}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;height:56px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 5%;
+  background:rgba(255,255,255,0.88);
+  backdrop-filter:saturate(200%) blur(20px);-webkit-backdrop-filter:saturate(200%) blur(20px);
+  border-bottom:1px solid rgba(0,0,0,0.06);transition:box-shadow .3s;
+}
+nav.shd{box-shadow:0 1px 12px rgba(0,0,0,0.09)}
+
+.logo-wrap{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-box{
+  width:32px;height:32px;border-radius:8px;overflow:hidden;flex-shrink:0;
+  background:linear-gradient(135deg,var(--blue),var(--blue-d));
+  display:flex;align-items:center;justify-content:center;position:relative;
+}
+.logo-box img{width:100%;height:100%;object-fit:contain;position:absolute;inset:0}
+.logo-fallback{font-family:var(--display);font-weight:800;font-size:.9rem;color:#fff}
+.logo-text{font-family:var(--display);font-weight:800;font-size:1.1rem;color:var(--ink);letter-spacing:.5px}
+.logo-text span{color:var(--blue)}
+
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:.83rem;font-weight:500;color:var(--ink2);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--blue)}
+
+.nav-r{display:flex;align-items:center;gap:10px}
+.nbtn{font-size:.83rem;font-weight:600;padding:8px 20px;border-radius:980px;text-decoration:none;transition:.2s;display:inline-flex;align-items:center;gap:6px;font-family:var(--body)}
+.nbtn-ghost{color:var(--ink2);border:1.5px solid var(--border);background:transparent}
+.nbtn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+.nbtn-fill{background:var(--blue);color:#fff;border:1.5px solid var(--blue)}
+.nbtn-fill:hover{background:var(--blue-d);border-color:var(--blue-d)}
+
+.hmbgr{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hmbgr span{display:block;width:22px;height:1.5px;background:var(--ink);border-radius:2px;transition:.3s}
+
+/* HERO */
+#hero{position:relative;height:100vh;min-height:620px;max-height:900px;overflow:hidden;display:flex;align-items:flex-end}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1498049794561-7780e7231661?w=1800&q=80') center/cover no-repeat;
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.18) 0%,rgba(0,0,0,.08) 40%,rgba(0,0,0,.62) 78%,rgba(0,0,0,.80) 100%);
+}
+.hero-body{
+  position:relative;z-index:2;width:100%;padding:0 5% 56px;
+  opacity:0;animation:fadeUp .9s .25s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+/* HERO FLOATING IMAGES */
+.hero-floating-images{
+  position:absolute;top:20%;right:5%;z-index:1;display:flex;flex-direction:column;gap:20px;opacity:0.7;
+}
+.hero-float-item{
+  width:80px;height:60px;border-radius:8px;overflow:hidden;border:2px solid rgba(255,255,255,.3);box-shadow:0 4px 20px rgba(0,0,0,.2);
+  animation:float 6s ease-in-out infinite;
+}
+.hero-float-item:nth-child(1){animation-delay:0s}
+.hero-float-item:nth-child(2){animation-delay:2s}
+.hero-float-item:nth-child(3){animation-delay:4s}
+.hero-float-item img{width:100%;height:100%;object-fit:cover}
+@keyframes float{
+  0%,100%{transform:translateY(0px) rotate(0deg)}
+  25%{transform:translateY(-10px) rotate(1deg)}
+  50%{transform:translateY(-5px) rotate(-1deg)}
+  75%{transform:translateY(-15px) rotate(0.5deg)}
+}
+
+@media(max-width:900px){
+  .hero-floating-images{display:none}
+}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);
+  backdrop-filter:blur(12px);color:#fff;font-size:.77rem;font-weight:500;
+  padding:5px 13px;border-radius:100px;margin-bottom:18px;letter-spacing:.3px;
+}
+.pill-dot{width:6px;height:6px;background:#4dff8a;border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+.hero-body h1{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.2;letter-spacing:-.5px;
+  color:#fff;max-width:660px;
+}
+.hero-body h1 em{font-style:normal;color:#64b5f6}
+.hero-sub{color:rgba(255,255,255,.78);font-size:.97rem;line-height:1.72;max-width:500px;margin:14px 0 28px;font-weight:400}
+.hero-acts{display:flex;gap:12px;flex-wrap:wrap}
+
+.btn-wh{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--ink);padding:12px 24px;border-radius:980px;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s}
+.btn-wh:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(0,0,0,.25)}
+.btn-gh-wh{display:inline-flex;align-items:center;gap:7px;border:1.5px solid rgba(255,255,255,.42);color:#fff;padding:12px 24px;border-radius:980px;font-size:.88rem;font-weight:500;text-decoration:none;backdrop-filter:blur(8px);transition:border-color .2s,background .2s}
+.btn-gh-wh:hover{border-color:rgba(255,255,255,.8);background:rgba(255,255,255,.1)}
+
+.hero-stats-bar{
+  position:absolute;bottom:0;left:0;right:0;z-index:3;
+  background:rgba(255,255,255,.95);backdrop-filter:blur(20px);
+  border-top:1px solid rgba(0,0,0,.06);
+  display:flex;justify-content:center;padding:0 5%;
+  opacity:0;animation:fadeUp .7s .75s forwards;
+}
+.hstat{flex:1;max-width:220px;display:flex;flex-direction:column;align-items:center;padding:18px 0;border-right:1px solid var(--border)}
+.hstat:last-child{border-right:none}
+.hstat-n{font-family:var(--display);font-size:1.5rem;font-weight:800;color:var(--ink);letter-spacing:-.3px}
+.hstat-n span{color:var(--blue)}
+.hstat-l{font-size:.76rem;color:var(--ink3);margin-top:3px;font-weight:400;letter-spacing:0}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* SECTIONS */
+section{padding:100px 5%}
+.sc{text-align:center}
+.sec-lbl{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--blue);margin-bottom:10px;font-family:var(--body)}
+h2{font-family:var(--display);font-size:clamp(1.9rem,3.2vw,2.8rem);font-weight:800;letter-spacing:-.5px;line-height:1.25;color:var(--ink)}
+h2 em{font-style:normal;color:var(--blue)}
+.sec-sub{color:var(--ink3);font-size:.93rem;line-height:1.78;max-width:500px;margin:14px auto 0;font-weight:400}
+
+/* REVEAL */
+.r{opacity:0;transform:translateY(20px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.r.on{opacity:1;transform:none}
+.r.d1{transition-delay:.05s}.r.d2{transition-delay:.13s}.r.d3{transition-delay:.21s}.r.d4{transition-delay:.29s}
+
+/* SERVICES */
+#services{background:var(--w)}
+.sv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:52px;box-shadow:var(--sh)}
+.sv-card{background:var(--w);padding:40px 32px;display:flex;flex-direction:column;transition:background .25s;cursor:default}
+.sv-card:hover{background:var(--blue-bg)}
+.sv-card.hot{background:var(--blue)}
+.sv-card.hot:hover{background:var(--blue-d)}
+.sv-tag{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--blue);background:var(--blue-bg);border-radius:100px;padding:4px 14px;margin-bottom:20px;width:fit-content;font-family:var(--body)}
+.sv-card.hot .sv-tag{color:rgba(255,255,255,.8);background:rgba(255,255,255,.15)}
+.sv-icon{font-size:2.2rem;margin-bottom:16px}
+.sv-card h3{font-family:var(--display);font-size:1.15rem;font-weight:800;letter-spacing:0px;color:var(--ink);margin-bottom:10px}
+.sv-card.hot h3{color:#fff}
+.sv-desc{font-size:.87rem;color:var(--ink3);line-height:1.75;flex:1;margin-bottom:24px;font-weight:400}
+.sv-card.hot .sv-desc{color:rgba(255,255,255,.72)}
+.sv-perks{display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
+.sv-perk{display:flex;align-items:center;gap:9px;font-size:.84rem;color:var(--ink2);font-weight:400}
+.sv-card.hot .sv-perk{color:rgba(255,255,255,.85)}
+.sv-chk{width:18px;height:18px;border-radius:50%;flex-shrink:0;background:var(--blue-bg);border:1.5px solid rgba(26,108,247,.25);background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 9l2.5 2.5L12.5 6' stroke='%231a6cf7' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+.sv-card.hot .sv-chk{background-color:rgba(255,255,255,.2);border-color:rgba(255,255,255,.3);background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 9l2.5 2.5L12.5 6' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.sv-price{font-family:var(--display);font-size:1.2rem;font-weight:800;color:var(--blue);letter-spacing:0}
+.sv-price small{font-family:var(--body);font-size:.74rem;font-weight:400;color:var(--ink3)}
+.sv-card.hot .sv-price{color:#fff}
+.sv-card.hot .sv-price small{color:rgba(255,255,255,.55)}
+.sv-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.82rem;font-weight:600;color:var(--blue);text-decoration:none;transition:gap .2s}
+.sv-link:hover{gap:10px}
+.sv-card.hot .sv-link{color:rgba(255,255,255,.88)}
+
+/* ABOUT */
+#about{background:var(--off)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-frame{width:100%;aspect-ratio:4/5;max-width:400px;border-radius:24px;overflow:hidden;background:#e0e8ff;box-shadow:var(--shl);position:relative;display:flex;align-items:center;justify-content:center}
+.about-ph{display:flex;flex-direction:column;align-items:center;gap:12px;color:rgba(26,108,247,.35)}
+.about-ph .ico{font-size:5rem}
+.about-ph p{font-size:.8rem;color:rgba(26,108,247,.5);text-align:center;padding:0 20px;line-height:1.6}
+.about-frame img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.about-badge{position:absolute;bottom:-18px;right:-18px;background:var(--blue);color:#fff;border-radius:14px;padding:14px 20px;text-align:center;box-shadow:0 8px 30px rgba(26,108,247,.4)}
+.about-badge .big{font-family:var(--display);font-size:1.8rem;font-weight:800;display:block;letter-spacing:-.3px}
+.about-badge .sm{font-size:.73rem;opacity:.82;font-weight:400;letter-spacing:0}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:26px}
+.chip{font-size:.76rem;font-weight:500;color:var(--ink2);background:#fff;border:1px solid var(--border);border-radius:100px;padding:5px 14px;transition:border-color .2s,color .2s;cursor:default;font-family:var(--body);letter-spacing:0}
+.chip:hover{border-color:var(--blue);color:var(--blue)}
+.why-list{display:flex;flex-direction:column;gap:13px;margin-top:30px}
+.why-row{display:flex;gap:15px;align-items:flex-start;padding:17px 19px;border-radius:14px;background:#fff;border:1px solid var(--border);transition:border-color .2s,box-shadow .2s}
+.why-row:hover{border-color:var(--blue);box-shadow:0 4px 16px rgba(26,108,247,.08)}
+.why-ic{font-size:1.35rem;flex-shrink:0;margin-top:2px}
+.why-tx h4{font-family:var(--display);font-size:.92rem;font-weight:700;margin-bottom:4px;letter-spacing:0}
+.why-tx p{font-size:.84rem;color:var(--ink3);line-height:1.68;font-weight:400}
+
+/* PROJECTS */
+#projects{background:var(--w)}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.proj-card{border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--w);box-shadow:var(--sh);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;cursor:pointer}
+.proj-card:hover{transform:translateY(-6px);box-shadow:var(--shl)}
+.proj-thumb{width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;overflow:hidden}
+.pt1{background:linear-gradient(135deg,#fff3e0,#ffe0b2)}
+.pt2{background:linear-gradient(135deg,#e8f5e9,#c8e6c9)}
+.pt3{background:linear-gradient(135deg,#e3f2fd,#bbdefb)}
+.proj-ov{position:absolute;inset:0;background:rgba(26,108,247,.85);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.proj-ov span{color:#fff;font-weight:600;font-size:.88rem;letter-spacing:.5px}
+.proj-card:hover .proj-ov{opacity:1}
+.proj-info{padding:20px 22px}
+.proj-meta{display:flex;align-items:center;gap:7px;font-size:.7rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--blue);margin-bottom:7px;font-family:var(--body)}
+.pdot{width:5px;height:5px;background:var(--blue);border-radius:50%}
+.proj-info h4{font-family:var(--display);font-weight:700;font-size:.95rem;margin-bottom:6px;color:var(--ink);letter-spacing:0}
+.proj-info p{font-size:.82rem;color:var(--ink3);line-height:1.6}
+.proj-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.ptag{font-size:.7rem;font-weight:500;background:var(--blue-bg);color:var(--blue);border-radius:6px;padding:3px 10px;font-family:var(--body);letter-spacing:0}
+
+/* PORTFOLIO */
+#portfolio{background:var(--off)}
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:52px}
+.port-card{background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--sh);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;display:flex;flex-direction:column}
+.port-card:hover{transform:translateY(-8px);box-shadow:var(--shl)}
+.port-img{width:100%;height:240px;position:relative;overflow:hidden;background:var(--blue-bg);display:flex;align-items:center;justify-content:center}
+.port-img img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.port-card:hover .port-img img{transform:scale(1.05)}
+.port-overlay{position:absolute;inset:0;background:rgba(26,108,247,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.port-overlay span{color:#fff;font-weight:600;font-size:.88rem;letter-spacing:.5px;text-align:center;padding:0 16px}
+.port-card:hover .port-overlay{opacity:1}
+.port-content{padding:28px 24px;flex:1;display:flex;flex-direction:column}
+.port-content h3{font-family:var(--display);font-size:1.1rem;font-weight:800;color:var(--ink);margin-bottom:12px;letter-spacing:0}
+.port-content p{font-size:.9rem;color:var(--ink3);line-height:1.75;margin-bottom:20px;font-weight:400}
+.port-list{list-style:none;display:flex;flex-direction:column;gap:11px}
+.port-list li{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--ink2);font-weight:500}
+.port-list li::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0}
+
+@media(max-width:1050px){
+  .port-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  .port-grid{grid-template-columns:1fr}
+}
+
+/* GALLERY */
+#gallery{background:var(--off)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px}
+.gallery-item{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.gallery-item:hover{transform:translateY(-6px)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-overlay{position:absolute;inset:0;background:rgba(26,108,247,.85);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.gallery-overlay span{color:#fff;font-weight:600;font-size:.9rem;letter-spacing:.5px;text-align:center;padding:0 12px}
+.gallery-item:hover .gallery-overlay{opacity:1}
+
+@media(max-width:1050px){
+  .gallery-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:800px){
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:500px){
+  .gallery-grid{grid-template-columns:1fr}
+}
+
+/* DIGITAL CARD */
+#ecard{background:var(--w)}
+.ecard-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-top:52px;max-width:900px;margin-left:auto;margin-right:auto}
+.ecard-item{background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:var(--sh);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;display:flex;flex-direction:column}
+.ecard-item:hover{transform:translateY(-8px);box-shadow:var(--shl)}
+.ecard-preview{width:100%;height:200px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--blue-bg),#fff);display:flex;align-items:center;justify-content:center}
+.ecard-preview img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.ecard-item:hover .ecard-preview img{transform:scale(1.08)}
+.ecard-overlay{position:absolute;inset:0;background:rgba(26,108,247,.8);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;backdrop-filter:blur(2px)}
+.ecard-overlay span{color:#fff;font-weight:600;font-size:.95rem;letter-spacing:.5px}
+.ecard-item:hover .ecard-overlay{opacity:1}
+.ecard-body{padding:28px 26px;flex:1;display:flex;flex-direction:column}
+.ecard-body h3{font-family:var(--display);font-size:1.15rem;font-weight:800;color:var(--ink);margin-bottom:12px;letter-spacing:0}
+.ecard-body p{font-size:.9rem;color:var(--ink3);line-height:1.72;margin-bottom:22px;font-weight:400}
+.ecard-features{display:flex;flex-direction:column;gap:11px;margin-bottom:24px;flex:1}
+.ecard-feature{display:flex;align-items:center;gap:11px;font-size:.88rem;color:var(--ink2);font-weight:500}
+.ecard-feature::before{content:'';display:inline-block;width:6px;height:6px;border-radius:2px;background:var(--blue);flex-shrink:0}
+.ecard-price{font-size:.9rem;color:var(--ink3);padding-top:16px;border-top:1px solid var(--border);font-weight:500}
+.ecard-price strong{color:var(--blue);font-size:1.1rem;font-weight:800}
+
+@media(max-width:800px){
+  .ecard-grid{grid-template-columns:1fr;gap:24px}
+}
+@media(max-width:700px){
+  .ecard-body{padding:22px 20px}
+  .ecard-features{gap:9px}
+}
+
+#benefits{background:url('tkiet agency.png') center/cover no-repeat, var(--off);position:relative;}
+#benefits .sc .sec-lbl,#benefits .sc h2,#benefits .sc .sec-sub{color:#fff;}
+.ben-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:52px;box-shadow:var(--sh)}
+.ben-card{background:#fff;padding:34px 26px;text-align:center;transition:background .2s}
+.ben-card:hover{background:var(--blue-bg)}
+.ben-ic{font-size:2rem;margin-bottom:13px}
+.ben-card h3{font-family:var(--display);font-size:.92rem;font-weight:700;margin-bottom:8px;color:var(--ink);letter-spacing:0}
+.ben-card p{font-size:.83rem;color:var(--ink3);line-height:1.7;font-weight:400}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--w)}
+.tc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
+.tc{background:var(--w);border:1px solid var(--border);border-radius:18px;padding:28px 24px;box-shadow:var(--sh);transition:border-color .2s,transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.tc:hover{border-color:var(--blue);transform:translateY(-3px);box-shadow:var(--shl)}
+.tc-stars{color:#f5a623;font-size:.9rem;letter-spacing:3px;margin-bottom:14px}
+.tc-text{font-size:.88rem;line-height:1.82;color:var(--ink2);font-style:italic;flex:1;margin-bottom:20px;font-weight:400}
+.tc-auth{display:flex;align-items:center;gap:12px}
+.tc-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#fff;flex-shrink:0}
+.av1{background:linear-gradient(135deg,#ff6b35,#ff3366)}.av2{background:linear-gradient(135deg,#00c851,#007e33)}.av3{background:linear-gradient(135deg,#1a6cf7,#6c3bff)}.av4{background:linear-gradient(135deg,#ff9f00,#ff6d00)}.av5{background:linear-gradient(135deg,#00b4d8,#0077b6)}
+.tc-inf h5{font-family:var(--display);font-weight:700;font-size:.87rem;color:var(--ink);letter-spacing:0}
+.tc-inf span{font-size:.74rem;color:var(--ink3)}
+.tc-invite{background:var(--blue);border-color:var(--blue);align-items:center;justify-content:center;text-align:center}
+.tc-invite:hover{background:var(--blue-d);border-color:var(--blue-d)}
+.tc-invite .inv-ico{font-size:2.2rem;margin-bottom:12px}
+.tc-invite h3{font-family:var(--display);font-weight:700;color:#fff;font-size:1rem;margin-bottom:8px;letter-spacing:0}
+.tc-invite p{font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:20px;font-style:normal}
+
+/* PROJECT SHOWCASE */
+.project-showcase{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px}
+.showcase-item{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/9;cursor:pointer;transition:transform .3s}
+.showcase-item:hover{transform:translateY(-4px)}
+.showcase-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.showcase-item:hover img{transform:scale(1.05)}
+.showcase-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);padding:12px 14px}
+.showcase-info span{color:#fff;font-weight:600;font-size:.8rem;letter-spacing:.3px}
+
+@media(max-width:1050px){
+  .tc-grid{grid-template-columns:repeat(2,1fr)}
+  .project-showcase{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:800px){
+  .tc-grid{grid-template-columns:1fr}
+  .project-showcase{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:500px){
+  .project-showcase{grid-template-columns:1fr}
+}
+
+/* CTA */
+#cta{background:var(--ink);padding:120px 5%;text-align:center;position:relative;overflow:hidden}
+#cta::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(26,108,247,.28),transparent 70%);pointer-events:none}
+#cta h2{color:#fff;font-size:clamp(2.1rem,4vw,3.4rem);max-width:680px;margin:0 auto}
+#cta h2 em{color:var(--blue-l)}
+#cta p{color:rgba(255,255,255,.52);margin:16px auto 0;max-width:480px;font-size:.96rem;line-height:1.72}
+.cta-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:38px}
+.btn-zalo{display:inline-flex;align-items:center;gap:9px;background:#1890ff;color:#fff;padding:14px 28px;border-radius:980px;font-size:.9rem;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn-zalo:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(24,144,255,.42)}
+.btn-mess{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.2);padding:14px 28px;border-radius:980px;font-size:.9rem;font-weight:500;text-decoration:none;backdrop-filter:blur(8px);transition:background .2s,border-color .2s}
+.btn-mess:hover{background:rgba(255,255,255,.17);border-color:rgba(255,255,255,.42)}
+.cta-note{margin-top:18px;font-size:.77rem;color:rgba(255,255,255,.3)}
+.cta-note span{color:var(--blue-l)}
+
+/* CTA IMAGES */
+.cta-images{display:flex;justify-content:center;gap:24px;margin:32px 0}
+.cta-img{display:flex;flex-direction:column;align-items:center;gap:8px}
+.cta-img img{width:120px;height:80px;object-fit:cover;border-radius:8px;border:2px solid rgba(255,255,255,.2)}
+.cta-img span{color:#fff;font-size:.8rem;font-weight:500;text-align:center}
+
+@media(max-width:600px){
+  .cta-images{flex-direction:column;gap:16px}
+  .cta-img img{width:150px;height:100px}
+}
+
+/* FOOTER */
+footer{background:#0f0f11;border-top:1px solid rgba(255,255,255,.05);padding:60px 5% 32px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:38px}
+.foot-brand .ft-logo{font-family:var(--display);font-weight:800;font-size:1.1rem;color:#fff;letter-spacing:.3px;display:block;margin-bottom:10px}
+.foot-brand .ft-logo span{color:var(--blue-l)}
+.foot-brand p{font-size:.82rem;color:rgba(255,255,255,.32);line-height:1.7;max-width:240px}
+.foot-col h4{font-family:var(--body);font-size:.72rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:14px}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.foot-col a{font-size:.82rem;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}
+.foot-col a:hover{color:#fff}
+.fci{font-size:.82rem;color:rgba(255,255,255,.35);margin-bottom:9px;display:flex;gap:8px}
+.fci strong{color:rgba(255,255,255,.55);min-width:54px}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.foot-bottom p{font-size:.73rem;color:rgba(255,255,255,.2)}
+.foot-slo{font-family:var(--body);font-size:.78rem;font-weight:600;color:rgba(26,108,247,.5);letter-spacing:.3px}
+
+/* FOOTER IMAGES */
+.footer-images{display:flex;gap:8px;margin-top:16px}
+.footer-images img{width:60px;height:40px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,.1);transition:transform .2s}
+.footer-images img:hover{transform:scale(1.05)}
+
+/* SOCIAL SIDEBAR */
+.soc-side{position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:800;display:flex;flex-direction:column;align-items:center;gap:5px}
+.soc-side::before,.soc-side::after{content:'';width:1px;height:40px;background:linear-gradient(to bottom,transparent,var(--border))}
+.soc-side::after{background:linear-gradient(to top,transparent,var(--border))}
+.sb{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.9);border:1px solid rgba(0,0,0,.1);cursor:pointer;text-decoration:none;transition:border-color .2s,transform .2s,box-shadow .2s,background .2s;position:relative}
+.sb:hover{transform:translateX(3px);box-shadow:0 4px 16px rgba(0,0,0,.15);background:#fff;border-color:rgba(0,0,0,.2)}
+.sb svg{width:17px;height:17px}
+.sb .tip{position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);background:#000;color:#fff;font-size:.7rem;font-weight:500;padding:4px 9px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.sb:hover .tip{opacity:1}
+.sb.fb svg{stroke:#1877f2}.sb.sp svg{stroke:#1db954}.sb.yt svg{stroke:#ff0000}.sb.tt svg{stroke:#ff0050}
+
+/* MUSIC PLAYER */
+.mp-toggle{position:fixed;bottom:88px;right:22px;width:46px;height:46px;border-radius:50%;background:#1ed760;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(30,215,96,.42);z-index:800;transition:transform .2s,box-shadow .2s,bottom .35s cubic-bezier(.34,1.2,.64,1)}
+.mp-toggle:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(30,215,96,.56)}
+.mp-toggle svg{width:20px;height:20px;fill:#000}
+.mp-toggle .eq{display:none;gap:2px;align-items:flex-end;height:15px}
+.mp-toggle.playing .eq{display:flex}.mp-toggle.playing svg{display:none}
+.eqb{width:3px;background:#000;border-radius:2px}
+.eqb:nth-child(1){height:7px;animation:eq .8s 0s ease-in-out infinite}
+.eqb:nth-child(2){height:13px;animation:eq .8s .15s ease-in-out infinite}
+.eqb:nth-child(3){height:9px;animation:eq .8s .3s ease-in-out infinite}
+.eqb:nth-child(4){height:15px;animation:eq .8s .1s ease-in-out infinite}
+@keyframes eq{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.25)}}
+
+.mp{position:fixed;bottom:88px;right:22px;width:318px;background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;z-index:801;box-shadow:0 20px 60px rgba(0,0,0,.13);transform:translateY(16px) scale(.96);opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.34,1.4,.64,1),opacity .28s}
+.mp.open{transform:none;opacity:1;pointer-events:all}
+.mp-hd{display:flex;align-items:center;justify-content:space-between;padding:13px 15px 10px;border-bottom:1px solid var(--border)}
+.mp-brand{display:flex;align-items:center;gap:7px;font-size:.68rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#1ed760;font-family:var(--body)}
+.mp-brand svg{width:17px;height:17px}
+.mp-x{width:22px;height:22px;border-radius:50%;background:var(--off);border:none;cursor:pointer;color:var(--ink3);font-size:.75rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.mp-x:hover{background:var(--border);color:var(--ink)}
+.mp-now{display:flex;align-items:center;gap:13px;padding:15px 15px 12px}
+.mp-cov{width:50px;height:50px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.5rem;overflow:hidden;transition:transform .5s}
+.mp-cov.spin{animation:covp 2s ease-in-out infinite}
+@keyframes covp{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.mp-inf{flex:1;min-width:0}
+.mp-tit{font-family:var(--body);font-weight:600;font-size:.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
+.mp-art{font-size:.72rem;color:var(--ink3);margin-top:2px}
+.mp-ht{background:none;border:none;cursor:pointer;color:var(--ink3);font-size:1rem;transition:color .2s,transform .2s}
+.mp-ht.on{color:#1ed760}.mp-ht:hover{transform:scale(1.2)}
+.mp-pw{padding:0 15px 11px}
+.mp-pb{width:100%;height:4px;background:var(--off);border-radius:2px;cursor:pointer;position:relative;margin-bottom:5px}
+.mp-pf{height:100%;background:#1ed760;border-radius:2px;width:35%;position:relative;transition:width .3s linear}
+.mp-pf::after{content:'';position:absolute;right:-5px;top:50%;transform:translateY(-50%);width:10px;height:10px;background:var(--ink);border-radius:50%;opacity:0;transition:opacity .2s}
+.mp-pb:hover .mp-pf::after{opacity:1}
+.mp-ts{display:flex;justify-content:space-between;font-size:.65rem;color:var(--ink3)}
+.mp-ct{display:flex;align-items:center;justify-content:center;gap:18px;padding:2px 15px 14px}
+.mpc{background:none;border:none;cursor:pointer;color:var(--ink3);display:flex;align-items:center;justify-content:center;transition:color .2s,transform .2s}
+.mpc:hover{color:var(--ink);transform:scale(1.1)}.mpc svg{width:17px;height:17px}
+.mp-pl{width:40px;height:40px;border-radius:50%;background:var(--ink);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s;box-shadow:0 3px 12px rgba(0,0,0,.15)}
+.mp-pl:hover{transform:scale(1.08);background:#111}.mp-pl svg{width:16px;height:16px;fill:#fff}
+.mp-vl{display:flex;align-items:center;gap:8px;padding:0 15px 13px}
+.mp-vic{font-size:.78rem;color:var(--ink3)}
+.mp-vb{flex:1;height:3px;background:var(--off);border-radius:2px;cursor:pointer}
+.mp-vf{height:100%;background:var(--ink3);border-radius:2px;width:70%}
+.mp-lst{border-top:1px solid var(--border);max-height:154px;overflow-y:auto;padding:8px 0}
+.mp-lst::-webkit-scrollbar{width:3px}.mp-lst::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.mpt{display:flex;align-items:center;gap:10px;padding:7px 15px;cursor:pointer;transition:background .15s}
+.mpt:hover{background:var(--off)}.mpt.on{background:#f0fff6}
+.mpt-n{width:15px;text-align:center;font-size:.68rem;color:var(--ink3);flex-shrink:0}
+.mpt.on .mpt-n{color:#1ed760}
+.mpt-ic{font-size:.95rem;flex-shrink:0}
+.mpt-info{flex:1;min-width:0}
+.mpt-nm{font-size:.8rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
+.mpt.on .mpt-nm{color:#1ed760;font-weight:600}
+.mpt-sb{font-size:.67rem;color:var(--ink3)}
+.mpt-dr{font-size:.68rem;color:var(--ink3);flex-shrink:0}
+
+/* FSB */
+.fsb{position:fixed;bottom:22px;right:22px;z-index:799;display:flex;flex-direction:column;align-items:flex-end;gap:9px}
+.fsb-list{display:flex;flex-direction:column;align-items:flex-end;gap:7px;overflow:hidden;max-height:0;opacity:0;transition:max-height .4s cubic-bezier(.34,1.2,.64,1),opacity .3s}
+.fsb-list.open{max-height:280px;opacity:1}
+.fsb-it{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--border);color:var(--ink2);border-radius:100px;padding:8px 18px;font-size:.8rem;font-weight:500;text-decoration:none;white-space:nowrap;box-shadow:var(--sh);transition:border-color .2s,color .2s,transform .2s}
+.fsb-it:hover{border-color:var(--blue);color:var(--blue);transform:translateX(-3px)}
+.fsb-d{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.fsb-main{display:flex;align-items:center;gap:8px;background:var(--blue);color:#fff;border:none;cursor:pointer;padding:12px 20px;border-radius:100px;font-family:var(--body);font-weight:600;font-size:.82rem;box-shadow:0 6px 24px rgba(26,108,247,.42);transition:transform .2s,box-shadow .2s;text-decoration:none}
+.fsb-main:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(26,108,247,.52)}
+.fsb-arr{width:13px;height:13px;transition:transform .3s}
+.fsb-arr.up{transform:rotate(180deg)}
+
+/* MOBILE MENU */
+.mob-menu{display:none;position:fixed;inset:0;z-index:950;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--display);font-size:1.6rem;font-weight:800;color:var(--ink);text-decoration:none;transition:color .2s}
+.mob-menu a:hover{color:var(--blue)}
+.mob-cls{position:absolute;top:20px;right:5%;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--ink)}
+
+/* RESPONSIVE */
+@media(max-width:1050px){
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .about-img-col{display:none}
+  .ben-grid{grid-template-columns:1fr 1fr}
+  .proj-grid{grid-template-columns:1fr 1fr}
+  .tc-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .sv-grid{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  section{padding:75px 5%}
+  .nav-links,.nbtn-ghost{display:none}
+  .hmbgr{display:flex}
+  .soc-side{display:none}
+  .ben-grid,.proj-grid,.tc-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:24px}
+  .hero-stats-bar{flex-wrap:wrap}
+  .hstat{flex:1 1 calc(50% - 1px)}
+  .mp{width:calc(100vw - 30px);right:15px}
+  .fsb,.mp-toggle{right:15px}
+  .fsb{bottom:15px}
+}
+</style>
+</head>
+<body>
+
+<!-- SOCIAL SIDEBAR -->
+<div class="soc-side">
+  <a href="https://www.facebook.com/profile.php?id=61579450872770" target="_blank" class="sb fb">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="#1877f2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="tip">Facebook</span>
+  </a>
+  <a href="#" onclick="toggleMP(event)" class="sb sp">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#1ed760" stroke-width="1.7"/><path d="M8 11.5c2.5-1 5.5-.5 7.5 1M7 14.5c3-1.5 6.5-1 9 1M9 8.5c2-.8 4.5-.5 6.5 1" stroke="#1ed760" stroke-width="1.7" stroke-linecap="round"/></svg>
+    <span class="tip">Nhạc nền</span>
+  </a>
+  <a href="https://youtube.com/@your_channel" target="_blank" class="sb yt">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" stroke="#ff0000" stroke-width="1.7"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" stroke="#ff0000" stroke-width="1.7" stroke-linejoin="round"/></svg>
+    <span class="tip">YouTube</span>
+  </a>
+  <a href="https://www.tiktok.com/@songtutoite" target="_blank" class="sb tt">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" stroke="#ff0050" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="tip">TikTok</span>
+  </a>
+</div>
+
+<!-- MUSIC PLAYER -->
+<div class="mp" id="mpBox">
+  <div class="mp-hd">
+    <div class="mp-brand">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1ed760"/><path d="M8 11.5c2.5-1 5.5-.5 7.5 1M7 14.5c3-1.5 6.5-1 9 1M9 8.5c2-.8 4.5-.5 6.5 1" stroke="#000" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+      ĐANG PHÁT
+    </div>
+    <button class="mp-x" onclick="toggleMP()">✕</button>
+  </div>
+  <div class="mp-now">
+    <div class="mp-cov" id="mpCov" style="background:linear-gradient(135deg,#e3f2fd,#bbdefb)"><span id="mpIcon">🎵</span></div>
+    <div class="mp-inf">
+      <div class="mp-tit" id="mpTitle">Lofi Study Beats</div>
+      <div class="mp-art" id="mpArtist">Chill Vibes · lo-fi</div>
+    </div>
+    <button class="mp-ht" id="mpHeart" onclick="toggleLike()">♡</button>
+  </div>
+  <div class="mp-pw">
+    <div class="mp-pb" id="mpBar" onclick="seekTk(event)"><div class="mp-pf" id="mpFill"></div></div>
+    <div class="mp-ts"><span id="mpCur">1:14</span><span id="mpTot">3:42</span></div>
+  </div>
+  <div class="mp-ct">
+    <button class="mpc" onclick="prevTk()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 20L9 12l10-8v16zM5 4h2v16H5z"/></svg></button>
+    <button class="mp-pl" id="mpPlayBtn" onclick="togglePlay()">
+      <svg id="mpPI" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg>
+      <svg id="mpPA" viewBox="0 0 24 24" fill="#fff" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+    </button>
+    <button class="mpc" onclick="nextTk()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 4l10 8-10 8V4zM19 4h-2v16h2z"/></svg></button>
+  </div>
+  <div class="mp-vl">
+    <span class="mp-vic">🔈</span>
+    <div class="mp-vb" onclick="setVol(event)" id="mpVB"><div class="mp-vf" id="mpVF"></div></div>
+    <span class="mp-vic">🔊</span>
+  </div>
+  <div class="mp-lst" id="mpList"></div>
+</div>
+
+<button class="mp-toggle" id="mpBtn" onclick="toggleMP()">
+  <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+  <div class="eq"><div class="eqb"></div><div class="eqb"></div><div class="eqb"></div><div class="eqb"></div></div>
+</button>
+
+<!-- FLOAT SERVICE -->
+<div class="fsb" id="fsbW">
+  <div class="fsb-list" id="fsbL">
+    <a href="#services" class="fsb-it" onclick="cFsb()"><div class="fsb-d" style="background:#f5a623"></div>Website Quán Cafe</a>
+    <a href="#services" class="fsb-it" onclick="cFsb()"><div class="fsb-d" style="background:#1ed760"></div>Website Bán Hàng</a>
+    <a href="#services" class="fsb-it" onclick="cFsb()"><div class="fsb-d" style="background:#1a6cf7"></div>Website Giới Thiệu</a>
+    <a href="#cta" class="fsb-it" onclick="cFsb()" style="border-color:rgba(26,108,247,.35);color:var(--blue)"><div class="fsb-d" style="background:var(--blue)"></div>💬 Tư vấn miễn phí</a>
+  </div>
+  <button class="fsb-main" onclick="tFsb()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+    Dịch vụ
+    <svg class="fsb-arr" id="fsbA" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg>
+  </button>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <!-- ════ LOGO ════
+       Để gắn logo thật: thay <span class="logo-fallback">T</span>
+       bằng <img src="logo-cua-ban.png" alt="Tkiet" id="logoImg">
+       và xóa dòng logo-fallback  -->
+  <a href="#" class="logo-wrap">
+    <div class="logo-box">
+      <!-- GẮN LOGO VÀO ĐÂY: <img src="your-logo.png" alt="Tkiet Agency"> -->
+      <span class="logo-fallback">T</span>
+    </div>
+    <span class="logo-text">Tkiet<span>.</span></span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#about">Về tôi</a></li>
+    <li><a href="#services">Dịch vụ</a></li>
+    <li><a href="#projects">Demo</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#ecard">Thẻ điện tử</a></li>
+    <li><a href="#testimonials">Phản hồi</a></li>
+  </ul>
+
+  <div class="nav-r">
+    <a href="#projects" class="nbtn nbtn-ghost">Xem demo</a>
+    <a href="#cta" class="nbtn nbtn-fill">Liên hệ ngay →</a>
+    <button class="hmbgr" onclick="openMob()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-cls" onclick="closeMob()">✕</button>
+  <a href="#about" onclick="closeMob()">Về tôi</a>
+  <a href="#services" onclick="closeMob()">Dịch vụ</a>
+  <a href="#projects" onclick="closeMob()">Demo</a>
+  <a href="#gallery" onclick="closeMob()">Gallery</a>
+  <a href="#ecard" onclick="closeMob()">Thẻ điện tử</a>
+  <a href="#testimonials" onclick="closeMob()">Phản hồi</a>
+  <a href="#cta" onclick="closeMob()" style="color:var(--blue)">Liên hệ ngay →</a>
+</div>
+
+<!-- ══════ HERO ══════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-floating-images">
+    <div class="hero-float-item">
+      <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=100&q=80" alt="Website quán cà phê">
+    </div>
+    <div class="hero-float-item">
+      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=100&q=80" alt="Website bán hàng">
+    </div>
+    <div class="hero-float-item">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=100&q=80" alt="Website dịch vụ">
+    </div>
+  </div>
+  <div class="hero-body">
+    <div class="hero-pill"><div class="pill-dot"></div> Đang nhận dự án · Phản hồi trong 30 phút</div>
+    <h1>Tôi giúp bạn có thêm<br><em>khách hàng</em> từ website</h1>
+    <p class="hero-sub">Website đẹp – nhanh – rẻ dành cho quán cafe, shop online và dịch vụ địa phương. Không cần kiến thức kỹ thuật.</p>
+    <div class="hero-acts">
+      <a href="#cta" class="btn-wh">🚀 Liên hệ ngay</a>
+      <a href="#projects" class="btn-gh-wh">Xem demo →</a>
+    </div>
+  </div>
+  <div class="hero-stats-bar">
+    <div class="hstat r d1"><div class="hstat-n">20<span>+</span></div><div class="hstat-l">Dự án hoàn thành</div></div>
+    <div class="hstat r d2"><div class="hstat-n">3<span>–7</span></div><div class="hstat-l">Ngày bàn giao</div></div>
+    <div class="hstat r d3"><div class="hstat-n">100<span>%</span></div><div class="hstat-l">Khách hàng hài lòng</div></div>
+    <div class="hstat r d4"><div class="hstat-n">1.2<span>M+</span></div><div class="hstat-l">Giá khởi điểm (đ)</div></div>
+  </div>
+</section>
+
+<!-- ══════ SERVICES ══════ -->
+<section id="services">
+  <div class="sc r">
+    <div class="sec-lbl">Dịch vụ</div>
+    <h2>Website phù hợp cho<br>mọi loại <em>kinh doanh</em></h2>
+    <p class="sec-sub">Không phải mọi website đều giống nhau. Mỗi loại hình cần một website được thiết kế đúng mục tiêu.</p>
+  </div>
+  <div class="sv-grid r">
+    <div class="sv-card">
+      <div class="sv-tag">☕ Phổ biến nhất</div>
+      <div class="sv-icon">☕</div>
+      <h3>Website Quán Cafe</h3>
+      <p class="sv-desc">Không chỉ đẹp — còn giúp khách đặt bàn online, xem menu, tìm đường đến quán ngay trên điện thoại. Tăng lượng khách mới.</p>
+      <div class="sv-perks">
+        <div class="sv-perk"><div class="sv-chk"></div>Menu online dễ cập nhật</div>
+        <div class="sv-perk"><div class="sv-chk"></div>Đặt bàn / đặt món trực tuyến  (thương lượng)</div>
+        <div class="sv-perk"><div class="sv-chk"></div>Google Maps tích hợp sẵn</div>
+        <div class="sv-perk"><div class="sv-chk"></div>Tối ưu cho điện thoại</div>
+      </div>
+      <div class="sv-price">từ 299.000đ - 499.000đ <small>· Bàn giao 3 ngày</small></div>
+      <a href="#cta" class="sv-link">Tư vấn ngay →</a>
+    </div>
+    <div class="sv-card hot">
+      <div class="sv-tag">⭐ Được chọn nhiều</div>
+      <div class="sv-icon">🛍️</div>
+      <h3>Website Bán Hàng</h3>
+      <p class="sv-desc">Bán hàng 24/7, không lệ thuộc Shopee/TikTok, không mất phí sàn. Tự chủ hoàn toàn dữ liệu và doanh thu.</p>
+      <div class="sv-perks">
+        <div class="sv-perk"><div class="sv-chk"></div>Giỏ hàng & đặt hàng online</div>
+        <div class="sv-perk"><div class="sv-chk"></div>giới thiệu sản phẩm chi tiết</div>
+        <div class="sv-perk"><div class="sv-chk"></div>Quản lý sản phẩm dễ dàng</div>
+        <div class="sv-perk"><div class="sv-chk"></div>show được nhiều hình ảnh, video</div>
+      </div>
+      <div class="sv-price">từ 699.000đ  <small>· Bàn giao 5 ngày</small></div>
+      <a href="#cta" class="sv-link">Tư vấn ngay →</a>
+    </div>
+    <div class="sv-card">
+      <div class="sv-tag">🏢 Dịch vụ địa phương</div>
+      <div class="sv-icon">🏢</div>
+      <h3>Website Giới Thiệu</h3>
+      <p class="sv-desc">Spa, gara, phòng khám, văn phòng… Tạo ấn tượng chuyên nghiệp từ lần đầu khách tìm trên Google. Tối ưu SEO địa phương.</p>
+      <div class="sv-perks">
+        <div class="sv-perk"><div class="sv-chk"></div>Tối ưu SEO địa phương</div>
+        <div class="sv-perk"><div class="sv-chk"></div>Nút Zalo / gọi nhanh</div>
+        <div class="sv-perk"><div class="sv-chk"></div>Ảnh, video giới thiệu</div>
+        <div class="sv-perk"><div class="sv-chk"></div>Thiết kế uy tín, chuyên nghiệp</div>
+      </div>
+      <div class="sv-price">từ 299.000đ <small>· Bàn giao 3 ngày</small></div>
+      <a href="#cta" class="sv-link">Tư vấn ngay →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ ABOUT ══════ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-col r">
+      <div style="position:relative;display:inline-block;width:100%;max-width:400px">
+        <div class="about-frame">
+          <img src="avar kiet.jpg" alt="Tkiet">
+          <div class="about-ph">
+            <div class="ico">🧑‍💻</div>
+            <p>Thêm ảnh đại diện<br>của bạn vào đây</p>
+          </div>
+          <div class="about-badge">
+            <span class="big">3+</span>
+            <span class="sm">Năm kinh nghiệm</span>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip">HTML / CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">WordPress</span>
+          <span class="chip">UI Design</span>
+          <span class="chip">SEO cơ bản</span>
+          <span class="chip">Responsive</span>
+        </div>
+      </div>
+    </div>
+    <div class="r">
+      <div class="sec-lbl">Về tôi</div>
+      <h2>Trẻ · Sáng tạo ·<br><em>Đáng tin cậy</em></h2>
+      <p style="color:var(--ink3);font-size:.93rem;line-height:1.78;margin-top:16px;margin-bottom:8px">Mình là Tkiet — học sinh đam mê thiết kế web từ năm lớp 10. Dù còn trẻ, mình đã hoàn thành <strong style="color:var(--ink)">20+ dự án thực tế</strong> cho khách hàng ở Đồng Nai và các tỉnh lân cận.</p>
+      <p style="color:var(--ink3);font-size:.93rem;line-height:1.78">Mình không làm theo kiểu "học sinh làm thử" — mình làm chuyên nghiệp, có quy trình rõ ràng, bàn giao đúng hẹn. Mỗi website được đầu tư thật sự để giúp khách tăng doanh thu.</p>
+      <div class="why-list">
+        <div class="why-row"><div class="why-ic">💰</div><div class="why-tx"><h4>Giá học sinh, chất lượng chuyên nghiệp</h4><p>Rẻ hơn 50–70% so với agency truyền thống, chất lượng không thua kém bất kỳ ai.</p></div></div>
+        <div class="why-row"><div class="why-ic">⚡</div><div class="why-tx"><h4>Làm nhanh, bàn giao đúng hẹn</h4><p>Template sẵn và quy trình rõ ràng. Bàn giao trong 3–7 ngày. Không để khách chờ dài cổ.</p></div></div>
+        <div class="why-row"><div class="why-ic">🤝</div><div class="why-tx"><h4>Hỗ trợ tận tình, không bỏ rơi</h4><p>Bảo hành 3 tháng, chỉnh sửa miễn phí, hướng dẫn tận tình. Cần gì, mình có mặt.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ GALLERY ══════ -->
+<section id="gallery" style="background:var(--off)">
+  <div class="sc r">
+    <div class="sec-lbl">Gallery</div>
+    <h2>Hình ảnh thực tế<br><em>các dự án đã làm</em></h2>
+    <p class="sec-sub">Xem những website mình đã tạo cho khách hàng thật. Từ quán cafe ấm cúng đến shop online hiện đại.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item r d1">
+      <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&q=80" alt="Website quán cà phê">
+      <div class="gallery-overlay"><span>☕ Quán cà phê</span></div>
+    </div>
+    <div class="gallery-item r d2">
+      <img src="trathuc.png" alt="Website bán hàng">
+      <div class="gallery-overlay"><span>👕 Shop thời trang</span></div>
+    </div>
+    <div class="gallery-item r d3">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80" alt="Website dịch vụ">
+      <div class="gallery-overlay"><span>🏢 Dịch vụ</span></div>
+    </div>
+    <div class="gallery-item r d4">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" alt="Website bán đồ ăn">
+      <div class="gallery-overlay"><span>🍕 Đồ ăn</span></div>
+    </div>
+    <div class="gallery-item r d5">
+      <img src="https://images.unsplash.com/photo-1556742111-a301076d9d18?w=400&q=80" alt="Website spa">
+      <div class="gallery-overlay"><span>💅 Spa & làm đẹp</span></div>
+    </div>
+    <div class="gallery-item r d6">
+      <img src="https://images.unsplash.com/photo-1560327185-654edadee3b1?w=400&q=80" alt="Website trà xanh">
+      <div class="gallery-overlay"><span>🍵 Quán trà</span></div>
+    </div>
+    <div class="gallery-item r d7">
+      <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=400&q=80" alt="Website thú cưng">
+      <div class="gallery-overlay"><span>🐾 Pet shop</span></div>
+    </div>
+    <div class="gallery-item r d8">
+      <img src="https://images.unsplash.com/photo-1555651206-1d11d3e5a2a7?w=400&q=80" alt="Booking form">
+      <div class="gallery-overlay"><span>📅 Booking online</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PROJECTS ══════ -->
+<section id="projects">
+  <div class="sc r">
+    <div class="sec-lbl">Dự án & Demo</div>
+    <h2>Xem website mình đã làm<br>cho <em>khách hàng thật</em></h2>
+    <p class="sec-sub">Mỗi dự án được thiết kế riêng — không dùng template chung chung. Click để xem demo.</p>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-card r d1">
+      <div class="proj-thumb pt1">☕<div class="proj-ov"><span>→ Xem demo</span></div></div>
+      <div class="proj-info">
+        <div class="proj-meta"><div class="pdot"></div>Quán Cafe</div>
+        <h4>The Daily Brew – Coffee House</h4>
+        <p>Menu online + đặt bàn, phong cách vintage ấm cúng, tối ưu điện thoại</p>
+        <div class="proj-tags"><span class="ptag">Cafe</span><span class="ptag">Menu số</span><span class="ptag">Đặt bàn</span></div>
+      </div>
+    </div>
+    <div class="proj-card r d2">
+      <div class="proj-thumb pt2">👗<div class="proj-ov"><span>→ Xem demo</span></div></div>
+      <div class="proj-info">
+        <div class="proj-meta"><div class="pdot"></div>Shop Online</div>
+        <h4>Bloom Fashion – Thời Trang</h4>
+        <p>Cửa hàng online với giỏ hàng, thanh toán QR, quản lý đơn hàng đơn giản</p>
+        <div class="proj-tags"><span class="ptag">Bán hàng</span><span class="ptag">Giỏ hàng</span><span class="ptag">QR Pay</span></div>
+      </div>
+    </div>
+    <div class="proj-card r d3">
+      <div class="proj-thumb pt3">🔧<div class="proj-ov"><span>→ Xem demo</span></div></div>
+      <div class="proj-info">
+        <div class="proj-meta"><div class="pdot"></div>Dịch vụ</div>
+        <h4>AutoFix – Gara Sửa Xe</h4>
+        <p>Website giới thiệu dịch vụ, nhận đặt lịch online, Google Maps tích hợp</p>
+        <div class="proj-tags"><span class="ptag">Dịch vụ</span><span class="ptag">Đặt lịch</span><span class="ptag">SEO local</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:34px" class="r">
+    <a href="#cta" class="nbtn nbtn-ghost" style="font-size:.88rem;padding:12px 26px">Muốn website như này? Liên hệ ngay →</a>
+  </div>
+</section>
+
+<!-- ══════ PORTFOLIO ══════ -->
+<section id="portfolio" style="background:var(--off)">
+  <div class="sc r">
+    <div class="sec-lbl">Portfolio</div>
+    <h2>Các loại website<br>mà chúng tôi <em>thường tạo</em></h2>
+    <p class="sec-sub">Mỗi loại có thiết kế riêng, tối ưu cho mục đích kinh doanh khác nhau.</p>
+  </div>
+  <div class="port-grid">
+    <div class="port-card r d1">
+      <div class="port-img">
+        <img src="https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&q=80" alt="Website quán cà phê">
+        <div class="port-overlay">
+          <span>Thêm hình ảnh của bạn</span>
+        </div>
+      </div>
+      <div class="port-content">
+        <h3>☕ Website Quán Cà Phê</h3>
+        <p>Menu online, đặt bàn, hình ảnh sản phẩm đẹp mắt. Tối ưu cho việc tăng khách mới.</p>
+        <ul class="port-list">
+          <li>✓ Menu & đồ uống</li>
+          <li>✓ Đặt bàn online</li>
+          <li>✓ Hình ảnh sản phẩm</li>
+          <li>✓ Liên hệ & chỉ đường</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="port-card r d2">
+      <div class="port-img">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&q=80" alt="Website bán hàng">
+        <div class="port-overlay">
+          <span>Thêm hình ảnh của bạn</span>
+        </div>
+      </div>
+      <div class="port-content">
+        <h3>👕 Website Bán Hàng Online</h3>
+        <p>Giỏ hàng xịn, thanh toán QR, quản lý đơn hàng. Bán được từ điện thoại lẫn máy tính.</p>
+        <ul class="port-list">
+          <li>✓ Giỏ hàng & thanh toán</li>
+          <li>✓ Quản lý kho hàng</li>
+          <li>✓ Theo dõi đơn hàng</li>
+          <li>✓ Khuyến mãi & coupon</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="port-card r d3">
+      <div class="port-img">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80" alt="Website giới thiệu dịch vụ">
+        <div class="port-overlay">
+          <span>Thêm hình ảnh của bạn</span>
+        </div>
+      </div>
+      <div class="port-content">
+        <h3>🏢 Website Giới Thiệu & Dịch Vụ</h3>
+        <p>Giới thiệu công ty, showcases dự án, đặt lịch hoặc liên hệ. Xây dựng uy tín thương hiệu.</p>
+        <ul class="port-list">
+          <li>✓ Giới thiệu công ty</li>
+          <li>✓ Dự án - portfolio</li>
+          <li>✓ Đặt lịch tư vấn</li>
+          <li>✓ Blog & tin tức</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ DIGITAL CARD / THẺ ĐIỆN TỬ ══════ -->
+<section id="ecard">
+  <div class="sc r">
+    <div class="sec-lbl">Thẻ Điện Tử</div>
+    <h2>Thẻ Giới Thiệu<br>cho <em>chuyên nghiệp</em></h2>
+    <p class="sec-sub">Digital card là thẻ chuyên nghiệp hiện đại. Chia sẻ liên kết trên LinkedIn, Email hoặc QR code. Người khác xem được thông tin và portfolio bạn.</p>
+  </div>
+  <div class="ecard-grid">
+    <div class="ecard-item r d1">
+      <div class="ecard-preview">
+        <img src="the.png" alt="Digital Card - Trang Cá Nhân Cơ Bản">
+        <div class="ecard-overlay">
+          <span>👤 Xem demo</span>
+        </div>
+      </div>
+      <div class="ecard-body">
+        <h3>👤 Trang Cá Nhân Cơ Bản</h3>
+        <p>Thẻ điện tử chuyên nghiệp hiển thị thông tin cơ bản. Phù hợp cho nhân viên, tư vấn viên, hoặc người muốn giới thiệu nhanh gọn.</p>
+        <div class="ecard-features">
+          <div class="ecard-feature">✓ Thông tin cá nhân (tên, SĐT, Email)</div>
+          <div class="ecard-feature">✓ Kết nối mạng xã hội</div>
+          <div class="ecard-feature">✓ Chia sẻ QR code</div>
+          <div class="ecard-feature">✓ Thiết kế chuyên nghiệp, tinh tế</div>
+          <div class="ecard-feature">✓ Tối ưu để in hoặc chia sẻ điện tử</div>
+        </div>
+        <div class="ecard-price">Gói thiết kế từ <strong>100k</strong></div>
+      </div>
+    </div>
+
+    <div class="ecard-item r d2">
+      <div class="ecard-preview">
+        <img src="the.png" alt="Digital Card - Trang Web Selon Sở Thích">
+        <div class="ecard-overlay">
+          <span>🎨 Xem demo</span>
+        </div>
+      </div>
+      <div class="ecard-body">
+        <h3>🎨 Trang Web Build Theo Sở Thích</h3>
+        <p>Digital card + portfolio mở rộng. Giới thiệu bản thân chi tiết, hiển thị dự án, kỹ năng, và dịch vụ. Trang riêng được build theo ý bạn.</p>
+        <div class="ecard-features">
+          <div class="ecard-feature">✓ Mô tả chi tiết + bio riêng</div>
+          <div class="ecard-feature">✓ Thư viện dự án hoặc portfolio</div>
+          <div class="ecard-feature">✓ Liệt kê kỹ năng & sertifikat</div>
+          <div class="ecard-feature">✓ Customizable 100% theo sở thích</div>
+          <div class="ecard-feature">✓ Có hình ảnh, video, hoặc blog riêng</div>
+        </div>
+        <div class="ecard-price">Gói thiết kế từ <strong>299k</strong></div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:40px" class="r">
+    <a href="#cta" class="nbtn nbtn-fill" style="font-size:.88rem;padding:12px 28px">Tạo thẻ điện tử của bạn →</a>
+  </div>
+</section>
+
+<!-- ══════ BENEFITS ══════ -->
+<section id="benefits">
+  <div class="sc r">
+    <div class="sec-lbl">Lợi ích</div>
+    <h2>Khách nhận được gì<br>khi có <em>website?</em></h2>
+    <p class="sec-sub">Website là tài sản số. Một trang web tốt hoạt động cho bạn 24/7, không nghỉ lễ, không cần tăng ca.</p>
+  </div>
+  <div class="ben-grid r">
+    <div class="ben-card"><div class="ben-ic">📈</div><h3>Có thêm khách hàng mới</h3><p>Khách tìm trên Google sẽ thấy bạn trước đối thủ. Không website = vô hình trên internet.</p></div>
+    <div class="ben-card"><div class="ben-ic">🕐</div><h3>Bán hàng 24/7, kể cả lúc ngủ</h3><p>Website không bao giờ ngủ. Khách đặt hàng lúc 2 giờ sáng — bạn thức dậy đã có đơn.</p></div>
+    <div class="ben-card"><div class="ben-ic">💎</div><h3>Tăng uy tín thương hiệu</h3><p>Khách tin tưởng hơn vào doanh nghiệp có website. Trông chuyên nghiệp hơn đối thủ.</p></div>
+    <div class="ben-card"><div class="ben-ic">🔓</div><h3>Không phụ thuộc nền tảng</h3><p>Shopee, TikTok, Facebook có thể khóa tài khoản bất cứ lúc nào. Website là tài sản của bạn mãi mãi.</p></div>
+  </div>
+</section>
+
+<!-- ══════ TESTIMONIALS ══════ -->
+<section id="testimonials">
+  <div class="sc r">
+    <div class="sec-lbl">Phản hồi</div>
+    <h2>Khách hàng nói gì về<br><em>Tkiet Agency?</em></h2>
+    <p class="sec-sub">Hơn 20 khách hàng đã tin tưởng. Đọc những phản hồi chân thực từ khách hàng thật.</p>
+  </div>
+
+  <!-- Project Showcase -->
+  <div class="project-showcase">
+    <div class="showcase-item r d1">
+      <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=300&q=80" alt="Website quán cà phê">
+      <div class="showcase-info">
+        <span>☕ Quán cà phê</span>
+      </div>
+    </div>
+    <div class="showcase-item r d2">
+      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&q=80" alt="Website bán hàng">
+      <div class="showcase-info">
+        <span>👕 Shop thời trang</span>
+      </div>
+    </div>
+    <div class="showcase-item r d3">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=300&q=80" alt="Website dịch vụ">
+      <div class="showcase-info">
+        <span>🏢 Dịch vụ</span>
+      </div>
+    </div>
+    <div class="showcase-item r d4">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&q=80" alt="Website bán đồ ăn">
+      <div class="showcase-info">
+        <span>🍕 Đồ ăn</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tc-grid">
+    <div class="tc r d1">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"Mình lo ngại ban đầu vì nghĩ học sinh thì làm sao bằng công ty. Nhưng website bàn giao đẹp hơn mình tưởng nhiều, lại còn nhanh nữa. Giờ quán nhận đặt bàn online được rồi!"</p>
+      <div class="tc-auth"><div class="tc-av av1">H</div><div class="tc-inf"><h5>Chị Hoa</h5><span>Chủ quán cafe · Biên Hòa</span></div></div>
+    </div>
+    <div class="tc r d2">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"Trước mình bán hàng trên Shopee, mất phí sàn riết cũng mệt. Bạn Tkiet làm website bán hàng riêng, giờ chủ động hơn nhiều. Đơn hàng vẫn đều dù không có sàn."</p>
+      <div class="tc-auth"><div class="tc-av av2">L</div><div class="tc-inf"><h5>Chị Linh</h5><span>Shop thời trang · Long Khánh</span></div></div>
+    </div>
+    <div class="tc r d3">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"Gara mình có website giờ trông xịn hẳn. Khách tìm Google thấy liền, gọi điện nhiều hơn hẳn. Tkiet còn hướng dẫn cách cập nhật thông tin, rất nhiệt tình."</p>
+      <div class="tc-auth"><div class="tc-av av3">T</div><div class="tc-inf"><h5>Anh Tuấn</h5><span>Chủ gara sửa xe · Trảng Bom</span></div></div>
+    </div>
+    <div class="tc r d1">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"Báo giá rõ ràng, không phát sinh thêm. Mình hỏi nhiều câu hỏi ngớ ngẩn mà bạn vẫn giải thích tận tình. Giá rẻ hơn công ty khác nhiều mà chất lượng không khác gì."</p>
+      <div class="tc-auth"><div class="tc-av av4">D</div><div class="tc-inf"><h5>Chú Dũng</h5><span>Quán ăn gia đình · Vĩnh Cửu</span></div></div>
+    </div>
+    <div class="tc r d2">
+      <div class="tc-stars">★★★★☆</div>
+      <p class="tc-text">"Mình cần website cho spa gấp vì sắp khai trương. Tkiet làm xong trong 4 ngày, kịp deadline. Sau bàn giao còn hỗ trợ chỉnh sửa thêm vài lần không tính phí. Rất recommend!"</p>
+      <div class="tc-auth"><div class="tc-av av5">N</div><div class="tc-inf"><h5>Chị Ngọc</h5><span>Chủ spa · Nhơn Trạch</span></div></div>
+    </div>
+    <div class="tc tc-invite r d3">
+      <div class="inv-ico">🌟</div>
+      <h3>Bạn sẽ là người tiếp theo?</h3>
+      <p>Hơn 20 khách hàng đã tin tưởng. Hãy là người tiếp theo có website đẹp với giá học sinh.</p>
+      <a href="#cta" class="btn-wh" style="font-size:.84rem;padding:11px 22px">Liên hệ ngay</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CTA ══════ -->
+<section id="cta">
+  <div class="r">
+    <div class="sec-lbl" style="color:var(--blue-l)">Bắt đầu ngay</div>
+    <h2>Sẵn sàng có website giúp bạn<br><em>kiếm thêm khách hàng?</em></h2>
+    <p>Tư vấn miễn phí, báo giá trong 30 phút. Không ép mua, không phát sinh chi phí ẩn.</p>
+
+    <!-- CTA Images -->
+    <div class="cta-images">
+      <div class="cta-img">
+        <img src="https://images.unsplash.com/photo-1460925895917-adf4e0c9f70d?w=200&q=80" alt="Website đẹp">
+        <span>Website đẹp</span>
+      </div>
+      <div class="cta-img">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&q=80" alt="Bán hàng online">
+        <span>Bán hàng online</span>
+      </div>
+      <div class="cta-img">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&q=80" alt="Dịch vụ">
+        <span>Dịch vụ</span>
+      </div>
+    </div>
+
+    <div class="cta-btns">
+      <a href="https://zalo.me/0343256183" class="btn-zalo" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="rgba(255,255,255,.2)"/><text x="50%" y="58%" font-size="24" font-weight="bold" fill="white" text-anchor="middle" dy=".1em">Z</text></svg>
+        Nhắn Zalo ngay
+      </a>
+      <a href="https://www.facebook.com/pham.tkiet.944734/" class="btn-mess" target="_blank">💬 Messenger</a>
+    </div>
+    <p class="cta-note">✨ Tư vấn miễn phí · 📋 Báo giá nhanh 30 phút · <span>🎓 Giá ưu đãi học sinh</span></p>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <!-- Logo footer — đổi text hoặc thêm <img> -->
+      <span class="ft-logo">Tkiet<span style="color:var(--blue-l)">.</span></span>
+      <p>Thiết kế website chuyên nghiệp cho quán cafe, shop online và dịch vụ địa phương tại Đồng Nai và toàn quốc.</p>
+
+      <!-- Footer Images -->
+      <div class="footer-images">
+        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=80&q=80" alt="Website quán cà phê" title="Website quán cà phê">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=80&q=80" alt="Website bán hàng" title="Website bán hàng">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=80&q=80" alt="Website dịch vụ" title="Website dịch vụ">
+      </div>
+    </div>
+    <div class="foot-col">
+      <h4>Dịch vụ</h4>
+      <ul>
+        <li><a href="#services">Website quán cafe</a></li>
+        <li><a href="#services">Website bán hàng</a></li>
+        <li><a href="#services">Website giới thiệu</a></li>
+        <li><a href="#projects">Xem demo</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Liên hệ</h4>
+      <div class="fci"><strong>Zalo:</strong>0343256183</div>
+      <div class="fci"><strong>Email:</strong>tkietpham5@gmail.com</div>
+      <div class="fci"><strong>Khu vực:</strong>Đồng Nai & toàn quốc</div>
+      <div class="fci"><strong>Giờ:</strong>8:00 – 22:00 hằng ngày</div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2025 Tkiet Agency. Made with ❤️ tại Biên Hòa, Đồng Nai.</p>
+    <div class="foot-slo">Trẻ. Sáng tạo. Đáng tin cậy.</div>
+  </div>
+</footer>
+
+<script>
+/* NAV */
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('shd',scrollY>20));
+function openMob(){document.getElementById('mobMenu').classList.add('open')}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open')}
+
+/* REVEAL */
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}});
+},{threshold:.10});
+document.querySelectorAll('.r').forEach(el=>ro.observe(el));
+
+/* MUSIC */
+const TKS=[
+  {title:'Lofi Study Beats',artist:'Chill Vibes · lo-fi',icon:'🎵',bg:'linear-gradient(135deg,#e3f2fd,#bbdefb)',dur:'3:42',secs:222},
+  {title:'Cafe Afternoon',artist:'Acoustic Mood · guitar',icon:'☕',bg:'linear-gradient(135deg,#fff3e0,#ffe0b2)',dur:'4:15',secs:255},
+  {title:'Focus Flow',artist:'Deep Work · ambient',icon:'🌊',bg:'linear-gradient(135deg,#e0f7fa,#b2ebf2)',dur:'3:58',secs:238},
+  {title:'City Nights',artist:'Urban Chill · synthwave',icon:'🌃',bg:'linear-gradient(135deg,#ede7f6,#d1c4e9)',dur:'5:02',secs:302},
+  {title:'Morning Glow',artist:'Soft Piano · classical',icon:'🌅',bg:'linear-gradient(135deg,#fff8e1,#ffecb3)',dur:'3:30',secs:210},
+];
+let cT=0,isP=false,prg=.35,vol=.7,lkd=false,tmr=null,mpOpen=false;
+const G=id=>document.getElementById(id);
+
+function renderList(){
+  G('mpList').innerHTML=TKS.map((t,i)=>`
+    <div class="mpt ${i===cT?'on':''}" onclick="selTk(${i})">
+      <div class="mpt-n">${i===cT&&isP?'▶':i+1}</div>
+      <div class="mpt-ic">${t.icon}</div>
+      <div class="mpt-info"><div class="mpt-nm">${t.title}</div><div class="mpt-sb">${t.artist}</div></div>
+      <div class="mpt-dr">${t.dur}</div>
+    </div>`).join('');
+}
+
+function syncUI(){
+  const t=TKS[cT];
+  G('mpTitle').textContent=t.title;G('mpArtist').textContent=t.artist;
+  G('mpIcon').textContent=t.icon;G('mpCov').style.background=t.bg;
+  G('mpTot').textContent=t.dur;
+  G('mpFill').style.width=(prg*100)+'%';
+  const s=Math.floor(prg*t.secs);
+  G('mpCur').textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+  G('mpVF').style.width=(vol*100)+'%';
+  G('mpHeart').textContent=lkd?'♥':'♡';G('mpHeart').classList.toggle('on',lkd);
+  G('mpPI').style.display=isP?'none':'block';G('mpPA').style.display=isP?'block':'none';
+  G('mpCov').classList.toggle('spin',isP);G('mpBtn').classList.toggle('playing',isP);
+  renderList();
+}
+
+function tick(){
+  clearInterval(tmr);
+  tmr=setInterval(()=>{
+    prg+=1/TKS[cT].secs;
+    if(prg>=1){prg=0;cT=(cT+1)%TKS.length;syncUI();return}
+    G('mpFill').style.width=(prg*100)+'%';
+    const s=Math.floor(prg*TKS[cT].secs);
+    G('mpCur').textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+  },1000);
+}
+
+function togglePlay(){isP=!isP;if(isP)tick();else clearInterval(tmr);syncUI()}
+function selTk(i){clearInterval(tmr);cT=i;prg=0;isP=true;tick();syncUI()}
+function nextTk(){clearInterval(tmr);cT=(cT+1)%TKS.length;prg=0;if(isP)tick();syncUI()}
+function prevTk(){clearInterval(tmr);cT=(cT-1+TKS.length)%TKS.length;prg=0;if(isP)tick();syncUI()}
+function seekTk(e){const b=G('mpBar');prg=Math.max(0,Math.min(1,e.offsetX/b.offsetWidth));syncUI()}
+function setVol(e){const b=G('mpVB');vol=Math.max(0,Math.min(1,e.offsetX/b.offsetWidth));G('mpVF').style.width=(vol*100)+'%'}
+function toggleLike(){lkd=!lkd;syncUI()}
+function toggleMP(e){
+  if(e)e.preventDefault();
+  mpOpen=!mpOpen;
+  G('mpBox').classList.toggle('open',mpOpen);
+  G('mpBtn').style.bottom=mpOpen?'440px':'88px';
+  syncUI();
+}
+syncUI();
+
+/* FSB */
+let fO=false;
+function tFsb(){fO=!fO;G('fsbL').classList.toggle('open',fO);G('fsbA').classList.toggle('up',fO)}
+function cFsb(){fO=false;G('fsbL').classList.remove('open');G('fsbA').classList.remove('up')}
+document.addEventListener('click',e=>{if(!G('fsbW').contains(e.target))cFsb()});
+</script>
+</body>
+</html>
